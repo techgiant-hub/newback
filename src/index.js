@@ -9,6 +9,14 @@ import connectDB from "./db/index.js";
 console.log("MONGODB_URI =", process.env.MONGODB_URI);
 
 connectDB()
+.then(()=>{
+  app.listen(process.env.PORT || 5000,()=>{
+    console.log(`server is running at port: ${process.env.PORT}`);
+  })
+})
+.catch((err)=>{
+  console.log("mongo db connection failed",err);
+})
 
  // function connectDB(){}  -->this is also a way
   //connectDB()
